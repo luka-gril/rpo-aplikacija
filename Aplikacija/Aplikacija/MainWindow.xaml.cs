@@ -20,9 +20,28 @@ namespace Aplikacija
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+
+
+
+            //List<MenuVrstica> menu = new List<MenuVrstica>();
+            //menu.Add(new MenuVrstica() { Ime = "IGRE", Ikona = new BitmapImage(new Uri(@"/slike/1f608.png", UriKind.Relative))  });
+            //menu.Add(new MenuVrstica() { Ime = "LESTVICA", Ikona = new BitmapImage(new Uri(@"/slike/1f60e.png", UriKind.Relative)) });
+            //menu.Add(new MenuVrstica() { Ime = "NASTAVITVE", Ikona = new BitmapImage(new Uri(@"/slike/1f637.png", UriKind.Relative)) });
+
+            //tabCont.ItemsSource = menu;
+
+            
+            
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
