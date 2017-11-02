@@ -42,6 +42,42 @@
 
                     <local:UserControlIskanje Grid.Column="0" />
                     <local:UserControlUporabnik Grid.Column="2" />
+
+                    <Grid Grid.Column="1" Background="LightGray">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="485*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ListView Name="listview_seznam_igre" Margin="5" Background="LightGray" HorizontalContentAlignment="Center" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ListViewItem Content="{Binding Path=Format}" Height="50" FontSize="25" VerticalAlignment="Stretch" 
+                                                  Margin="5" Foreground="Black" Name="listviewitem_seznam_igre" HorizontalAlignment="Stretch" MouseDoubleClick="listviewitem_seznam_igre_MouseDoubleClick"  />
+                                    <DataTemplate.Triggers>
+                                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation To="Red" Duration="0" Storyboard.TargetName="listviewitem_seznam_igre" Storyboard.TargetProperty="Foreground.Color"></ColorAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation To="Black" Duration="0" Storyboard.TargetName="listviewitem_seznam_igre" Storyboard.TargetProperty="Foreground.Color"></ColorAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView >
+
+
+                        <Button VerticalAlignment="Bottom" Name="Shrani" Grid.Column="1" Width="100" Height="60" Content="Shrani" 
+                                FontSize="20" Margin="166,0,0,20" Click="Shrani_Click"  />
+
+                    </Grid>
                 </Grid>
             </TabItem>
 
@@ -102,7 +138,7 @@
                             
                         </StackPanel>
                         <Button VerticalAlignment="Bottom" Grid.Column="1" Width="100" Height="60" Content="Shrani" 
-                                FontSize="20" Margin="166,0,0,20" Click="Button_Click" />
+                                FontSize="20" Margin="166,0,0,20" Click="Shrani_Click" />
 
 
 
