@@ -63,7 +63,9 @@ namespace Aplikacija
         private void Shrani_Click(object sender, RoutedEventArgs e)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Igra>));
-            using (TextWriter writer = new StreamWriter(@"IgreDefault.xml"))
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string fullPath = System.IO.Path.Combine(path, @"xml_files/IgreDefault.xml");
+            using (TextWriter writer = new StreamWriter(path))
             {
                 serializer.Serialize(writer, seznam_igre);
                 writer.Close();
