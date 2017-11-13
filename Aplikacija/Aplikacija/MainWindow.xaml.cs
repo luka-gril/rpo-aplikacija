@@ -35,7 +35,9 @@ namespace Aplikacija
             {
 
                 XmlSerializer deserializer = new XmlSerializer(typeof(ObservableCollection<Igra>));
-                TextReader tr = new StreamReader(@"IgreDefault.xml");
+                string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                string fullPath = System.IO.Path.Combine(path, @"xml_files/IgreDefault.xml");
+                TextReader tr = new StreamReader(fullPath);
                 seznam_igre.Clear();
                 seznam_igre = (ObservableCollection<Igra>)deserializer.Deserialize(tr);
                 tr.Close();
