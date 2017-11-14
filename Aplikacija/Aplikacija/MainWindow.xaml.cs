@@ -16,6 +16,7 @@ using System.Xml.Serialization;
 using System.Windows.Threading;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Xml.Linq;
 
 namespace Aplikacija
 {
@@ -29,14 +30,13 @@ namespace Aplikacija
         public MainWindow()
         {
             InitializeComponent();
-
-
+            DataContext = this;
             try
             {
 
                 XmlSerializer deserializer = new XmlSerializer(typeof(ObservableCollection<Igra>));
                 string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-                string fullPath = System.IO.Path.Combine(path, @"xml_files/IgreDefault.xml");
+                string fullPath = System.IO.Path.Combine(path, "xml_files/IgreDefault.xml");
                 TextReader tr = new StreamReader(fullPath);
                 seznam_igre.Clear();
                 seznam_igre = (ObservableCollection<Igra>)deserializer.Deserialize(tr);
@@ -64,8 +64,9 @@ namespace Aplikacija
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Igra>));
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            string fullPath = System.IO.Path.Combine(path, @"xml_files/IgreDefault.xml");
-            using (TextWriter writer = new StreamWriter(path))
+            string fullPath = System.IO.Path.Combine(path, "xml_files/IgreDefault.xml");
+            MessageBox.Show(fullPath);
+            using (TextWriter writer = new StreamWriter(fullPath))
             {
                 serializer.Serialize(writer, seznam_igre);
                 writer.Close();
@@ -74,7 +75,14 @@ namespace Aplikacija
 
         private void listviewitem_seznam_igre_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Gumb dela");
+            Igra_okno igra_okno = new Igra_okno();
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string fullPath = System.IO.Path.Combine(path, "slike/Call_of_Duty_Cover.jpg");
+            //MessageBox.Show(listview_seznam_igre.SelectedIndex.ToString());
+
+            igra_okno.Background = new ImageBrush(new BitmapImage(new Uri(fullPath, UriKind.Absolute)));
+            igra_okno.ShowDialog();
+            
         }
     }
 }

@@ -51,7 +51,7 @@
                         <ListView Name="listview_seznam_igre" Margin="5" Background="LightGray" HorizontalContentAlignment="Center" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ListViewItem Content="{Binding Path=Format}" Height="50" FontSize="25" VerticalAlignment="Stretch" 
+                                    <ListViewItem Content="{Binding Format}" Height="50" FontSize="25" VerticalAlignment="Stretch" 
                                                   Margin="5" Foreground="Black" Name="listviewitem_seznam_igre" HorizontalAlignment="Stretch" MouseDoubleClick="listviewitem_seznam_igre_MouseDoubleClick"  />
                                     <DataTemplate.Triggers>
                                         <EventTrigger RoutedEvent="Mouse.MouseEnter">
