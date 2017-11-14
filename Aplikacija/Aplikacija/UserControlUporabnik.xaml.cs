@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace Aplikacija
 {
@@ -20,20 +23,30 @@ namespace Aplikacija
     /// </summary>
     public partial class UserControlUporabnik : UserControl
     {
-        Uporabnik upo = new Uporabnik();
+        //  Uporabnik upo = new Uporabnik();
+        ObservableCollection<Uporabnik> uporabnik = new ObservableCollection<Uporabnik>();
 
         public UserControlUporabnik()
         {
             InitializeComponent();
 
-            upo.Ime = "John";
-            upo.Priimek = "Doe";
-            upo.Vzdevek = "JDoe";
-            upo.Slika = new BitmapImage(new Uri(@"/slike/city.jpg", UriKind.Relative));
+            XmlSerializer ser = new XmlSerializer(typeof(ObservableCollection<Uporabnik>));
+            string pot = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string celaPot = System.IO.Path.Combine(pot, "xml_files/Uporabnik.xml");
+            TextReader reader = new StreamReader(celaPot);
+            uporabnik = (ObservableCollection<Uporabnik>)ser.Deserialize(reader);
+            reader.Close();
 
-            ime_priimekUpo.Content = string.Join(" ", upo.Ime, upo.Priimek);
-            vzdevekUpo.Content = upo.Vzdevek;           
-            slikaUpo.Source = upo.Slika;
+            foreach (var el in uporabnik)
+            {
+                ime_priimekUpo.Content = el.Ime + " " + el.Priimek.ToString();
+                vzdevekUpo.Content = el.Vzdevek;
+                slikaUpo.Source = el.Slika;
+            }
+
+      
+
+
         }
     }
 }

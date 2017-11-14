@@ -67,6 +67,10 @@
     <Compile Include="UserControlUporabnik.xaml.cs">
       <DependentUpon>UserControlUporabnik.xaml</DependentUpon>
     </Compile>
+    <Page Include="Button_Dictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Igra_okno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,6 +137,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="slike\Call_of_Duty_Cover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="slike\iskanje.png" />
+    <Resource Include="slike\iskanje_slike.png" />
+    <Resource Include="slike\shrani.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

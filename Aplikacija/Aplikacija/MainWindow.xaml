@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aplikacija"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1100" MinHeight="700" MinWidth="950" >
+        Title="MainWindow" Height="805" Width="1210" MinHeight="710" MinWidth="1150" >
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="MW_TI_Dictionary.xaml" />
+                <ResourceDictionary Source="Button_Dictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -18,7 +19,7 @@
     <Grid Background="#FF76746F">
 
 
-        <TabControl x:Name="tabCont" Margin="0"  >
+        <TabControl x:Name="tabCont" Margin="0" Padding="0,0,0,0"  >
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
                     <Setter Property="HorizontalAlignment" Value="Center" />
@@ -40,10 +41,10 @@
                         <ColumnDefinition Width="300" />
                     </Grid.ColumnDefinitions>
 
-                    <local:UserControlIskanje Grid.Column="0" />
-                    <local:UserControlUporabnik Grid.Column="2" />
+                    <local:UserControlIskanje Grid.Column="0" Height="auto" Padding="0,0,0,0" x:Name="iskanjeIgre" OnBesedilo="iskanjeIgre_OnBesedilo" />
+                    <local:UserControlUporabnik Grid.Column="2" Height="auto"  x:Name="upoIgre"  Padding="0,0,0,0"   />
 
-                    <Grid Grid.Column="1" Background="LightGray">
+                    <Grid Grid.Column="1" Background="LightGray" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="485*" />
                         </Grid.ColumnDefinitions>
@@ -73,9 +74,9 @@
                             </ListView.ItemTemplate>
                         </ListView >
 
-
-                        <Button VerticalAlignment="Bottom" Name="Shrani" Grid.Column="1" Width="100" Height="60" Content="Shrani" 
-                                FontSize="20" Margin="166,0,0,20" Click="Shrani_Click"  />
+                        <Button Name="Shrani" Grid.Column="1" Click="Shrani_Click" Style="{StaticResource Shrani}" />
+                        <!--<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Name="Shrani" Grid.Column="1" Width="100" Height="60" Content="Shrani" 
+                                FontSize="20" Margin="0,0,40,20" Click="Shrani_Click"  />-->
 
                     </Grid>
                 </Grid>
@@ -96,8 +97,8 @@
                         <ColumnDefinition Width="300" />
                     </Grid.ColumnDefinitions>
 
-                    <local:UserControlIskanje Grid.Column="0" />
-                    <local:UserControlUporabnik Grid.Column="2" />
+                    <local:UserControlIskanje Grid.Column="0" Height="auto"  Padding="0,0,0,0"  />
+                    <local:UserControlUporabnik Grid.Column="2" Height="auto" x:Name="upoLes" Padding="0,0,0,0" />
                 </Grid>
             </TabItem>
 
@@ -115,14 +116,15 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="300" />
                     </Grid.ColumnDefinitions>
-                    <local:UserControlIskanje Grid.Column="0" />
-                    <local:UserControlUporabnik Grid.Column="2" />
+                    <local:UserControlIskanje Grid.Column="0" Height="auto" Padding="0,0,0,0"  />
+                    <local:UserControlUporabnik Grid.Column="2" Height="auto" x:Name="upoNas" Padding="0,0,0,0"  />
 
                     <Grid Grid.Column="1" Background="LightGray">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="180*" />
-                            <ColumnDefinition Width="305*" />
+                            <ColumnDefinition Width="169*" />
+                            <ColumnDefinition Width="427*" />
                         </Grid.ColumnDefinitions>
+
 
                         <StackPanel Margin="5" >
                             <Label Content="_Ime" Height="50"  FontSize="25" VerticalContentAlignment="Center" Margin="5"/>
@@ -130,19 +132,18 @@
                             <Label Content="_Vzdevek" Height="50" FontSize="25" VerticalContentAlignment="Center"  Margin="5" />
                             <Label Content="_Slika" Height="50" FontSize="25" VerticalContentAlignment="Center" Margin="5,20,5,5" />
                         </StackPanel >
-                        <StackPanel  Margin="5" Grid.Column="1">
+                        <StackPanel  Margin="5" Grid.Column="1" Height="auto">
                             <TextBox Name="NasIme" Height="50"  FontSize="23" VerticalContentAlignment="Center" Margin="5" />
                             <TextBox Name="NasPriimek" Height="50" FontSize="23" VerticalContentAlignment="Center" Margin="5" />
                             <TextBox Name="NasVzdevek" Height="50" FontSize="23" VerticalContentAlignment="Center" Margin="5" />
-                            <Image Name="NasSlika" Height="200" Width="190" Margin="0,10,0,0"  />
-                            
+                            <Image Name="NasSlika" Height="252" Margin="56,10,53,0"    />
+                            <Button Name="slika" Click="slika_Click" Style="{StaticResource IskanjeSlike}" />
+                            <!--<Button Name="slika" Content="Išči" Height="50" Width="60" FontSize="23" Margin="10" Click="slika_Click" />-->
                         </StackPanel>
-                        <Button VerticalAlignment="Bottom" Grid.Column="1" Width="100" Height="60" Content="Shrani" 
-                                FontSize="20" Margin="166,0,0,20" Click="Shrani_Click" />
-
-
-
-
+                        <!--<Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Width="100" Height="60" Content="Shrani" 
+                                FontSize="20" Margin="0,0,40,20" Click="Shrani_Nastavitve_Click" />-->
+                        <Button Grid.Column="1" Click="Shrani_Nastavitve_Click" Style="{StaticResource Shrani}" 
+                                />
                     </Grid>
 
 

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace Aplikacija
 {
@@ -45,6 +47,7 @@ namespace Aplikacija
             get { return _priimek; }
         }
 
+        [XmlIgnore]
         public string Ime_Priimek
         {
             set
@@ -66,6 +69,7 @@ namespace Aplikacija
             get { return _vzdevek; }
         }
 
+        [XmlIgnore]
         public BitmapSource Slika
         {
             set
@@ -78,6 +82,46 @@ namespace Aplikacija
                 return _slika;
             }
         }
+
+
+        [XmlElement("Slika")]                           // vir: http://stackoverflow.com/questions/18841690/serialize-and-store-an-image-in-an-xml-file
+        public byte[] ImageBuffer
+        {
+
+            get
+            {
+                byte[] imageBuffer = null;
+                if (Slika != null)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        var encoder = new PngBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(Slika));
+                        encoder.Save(stream);
+                        imageBuffer = stream.ToArray();
+                    }
+                }
+                return imageBuffer;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    Slika = null;
+                }
+                else
+                {
+                    using (var stream = new MemoryStream(value))
+                    {
+                        var decoder = BitmapDecoder.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                        Slika = decoder.Frames[0];
+                    }
+                }
+            }
+
+        }
+
 
 
     }

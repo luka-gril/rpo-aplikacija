@@ -26,8 +26,8 @@
         
         <StackPanel >
             <Image Name="slikaUpo" Margin="20,30,20,5"  />
-            <Label Name="ime_priimekUpo" FontSize="28" FontFamily="SimSun"  />
-            <Label Name="vzdevekUpo" FontStyle="Italic" FontSize="20"  />
+            <Label Name="ime_priimekUpo" FontSize="28" FontFamily="SimSun"   />
+            <Label Name="vzdevekUpo" FontStyle="Italic" FontSize="20" />
         </StackPanel>
 
 
