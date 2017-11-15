@@ -14,10 +14,11 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Iskanje" />
-            <TextBox Name="iskanje" Height="20"  Margin="0,3" Width="247" Background="LightGray"/>
-        </StackPanel>
+        <DockPanel Margin="2" Background="LightGray">
+            <Image Source="/slike/iskanje.png" DockPanel.Dock="Left" HorizontalAlignment="Right" Height="30" Width="30"/>
+            <TextBox Name="iskanje" Text="Iskanje..." FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                     Height="32" Background="Transparent" BorderBrush="{x:Null}" Margin="-1,0,0,0" Padding="2,0,0,0" />
+        </DockPanel>
 
         <ListView Grid.Row="1" Name="Rezultati" Background="#FF76746F" SelectionChanged="ResultSelected">
             <ListView.ItemTemplate>

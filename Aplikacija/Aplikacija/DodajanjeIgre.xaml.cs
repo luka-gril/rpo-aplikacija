@@ -20,5 +20,14 @@ namespace Aplikacija {
             this.Close();
         }
 
+        private void ImeIgre_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Izhod_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

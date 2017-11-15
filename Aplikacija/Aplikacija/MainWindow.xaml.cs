@@ -16,6 +16,7 @@ namespace Aplikacija {
 
         public MainWindow() {
             InitializeComponent();
+            WindowState = WindowState.Maximized;
             DeserializirajIgre();
             DeserializirajUporabnike();
             SeznamIger.Igre.ItemsSource = mIgre;

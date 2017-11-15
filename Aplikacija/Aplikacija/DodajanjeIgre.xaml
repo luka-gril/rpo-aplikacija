@@ -5,10 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aplikacija"
         mc:Ignorable="d"
-        Title="DodajanjeIgre" Height="300" Width="600">
-    <Grid>
+        Title="DodajanjeIgre" Height="405" Width="428" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DodajOkno_Dictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="LightGray" Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
@@ -18,11 +25,18 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Name="ImeIgre" Grid.Row="0" Grid.Column="0" Background="Blue" Width="150" Height="30"/>
+        <StackPanel Grid.ColumnSpan="2">
+            <Label Content="Ime igre" Margin="5,5,5,0"/>
+            <TextBox Name="ImeIgre" Margin="30,0" TextChanged="ImeIgre_TextChanged"/>
+            <Label Content="Pot igre" Margin="5,20,5,0"/>
+            <DockPanel Margin="30,0" Background="LightGray" >
+                <Button Style="{StaticResource IsaknjePoti}"/>
+                <TextBox Name="PotIgre" VerticalAlignment="Stretch"  />
+            </DockPanel>
+        </StackPanel>
 
-        <TextBox Name="PotIgre" Grid.Row="0" Grid.Column="1" Background="Blue" Width="150" Height="30"/>
-
-        <Button Grid.Row="1" Grid.Column="1" Background="Gray" Width="150" Height="30"  Click="DodajIgro"/>
+        <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource Shrani}" Click="DodajIgro"/>
+        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource Cancel}" Click="Izhod_Click" />
 
 
     </Grid>
