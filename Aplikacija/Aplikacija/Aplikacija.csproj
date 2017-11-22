@@ -70,6 +70,9 @@
     <Compile Include="UserControlUporabniki.xaml.cs">
       <DependentUpon>UserControlUporabniki.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlZagonIgre.xaml.cs">
+      <DependentUpon>UserControlZagonIgre.xaml</DependentUpon>
+    </Compile>
     <Page Include="Button_Dictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlUporabniki.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlZagonIgre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +162,13 @@
   <ItemGroup>
     <Resource Include="Slike\cancel.png" />
     <Resource Include="Slike\ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slike\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slike\cod2.jpg" />
+    <Resource Include="Slike\fifa17.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

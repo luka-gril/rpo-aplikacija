@@ -42,6 +42,7 @@
                     </Grid.ColumnDefinitions>
 
                     <local:UserControlIgre x:Name="SeznamIger" Height="auto" Padding="0,0,0,0" Grid.Column="0" GameClicked="IgraIzbrana"/>
+                    <local:UserControlZagonIgre x:Name="ZagonIgre" Height="auto" Padding="0,0,0,0" Grid.Column="1" Background="LightGray" />
                     <local:UserControlRezultati x:Name="SeznamRezultatov" Height="auto" Padding="0,0,0,0" Grid.Column="2" ResultClicked="RezultatIzbran" />
                 </Grid>
             </TabItem>

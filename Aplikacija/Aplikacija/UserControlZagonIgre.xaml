@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Aplikacija.UserControlZagonIgre"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Aplikacija"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Button_Dictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush x:Name="ozadje" Stretch="Fill" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.ColumnSpan="2" Name="imeIgre" Height="auto" FontSize="30" TextWrapping="Wrap" FontWeight="DemiBold"  Foreground="#FFA25555" 
+               VerticalAlignment="Top" Margin="5,10,5,5" HorizontalAlignment="Center" FontFamily="Castellar" ></TextBlock>
+
+        <Button Name="zazeniIgro" Grid.Row="1" Grid.Column="1" Style="{StaticResource Zagon}" />
+
+    </Grid>
+</UserControl>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace Aplikacija {
@@ -11,8 +13,7 @@ namespace Aplikacija {
 
         public ObservableCollection<Uporabnik> mUporabniki = new ObservableCollection<Uporabnik>();
         public ObservableCollection<Igra> mIgre = new ObservableCollection<Igra>();
-        private Igra mIzbranaIgra = null;
-
+        private Igra mIzbranaIgra = null;      
 
         public MainWindow() {
             InitializeComponent();
@@ -91,6 +92,30 @@ namespace Aplikacija {
                 SeznamRezultatov.Rezultati.ItemsSource = mIzbranaIgra.mRezultati;
             }
             Console.WriteLine(mIzbranaIgra.mIme);
+
+            ZagonIgre.imeIgre.Text = mIzbranaIgra.mIme;          
+            ImageBrush ib = new ImageBrush();
+            string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string fullPath;
+
+            if (mIzbranaIgra.mIme=="Call of duty 2")
+            {
+                fullPath = System.IO.Path.Combine(path, "slike/cod2.jpg");
+                ib.ImageSource = new BitmapImage(new Uri(fullPath,UriKind.Relative));
+                ZagonIgre.ozadje.ImageSource = ib.ImageSource;
+            } 
+            else if (mIzbranaIgra.mIme == "Fifa17")
+            {
+                fullPath = System.IO.Path.Combine(path, "slike/fifa17.jpg");
+                ib.ImageSource = new BitmapImage(new Uri(fullPath, UriKind.Relative));
+                ZagonIgre.ozadje.ImageSource = ib.ImageSource;
+            }
+            else
+            {
+                ZagonIgre.Background = Brushes.LightGray;
+            }
+
+
             /*
              * V tej metodi vzames podatke iz spremenljivke mIzbranaIgra in jih vstavis v vmesnik (ime, gumb za zagon,...)
              * 
