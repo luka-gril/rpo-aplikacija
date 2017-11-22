@@ -90,6 +90,7 @@ namespace Aplikacija {
             if(mIzbranaIgra.mRezultati != null){
                 SeznamRezultatov.Rezultati.ItemsSource = mIzbranaIgra.mRezultati;
             }
+            Console.WriteLine(mIzbranaIgra.mIme);
             /*
              * V tej metodi vzames podatke iz spremenljivke mIzbranaIgra in jih vstavis v vmesnik (ime, gumb za zagon,...)
              * 
