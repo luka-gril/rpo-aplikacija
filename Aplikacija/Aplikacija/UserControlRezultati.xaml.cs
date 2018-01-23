@@ -14,7 +14,7 @@ namespace Aplikacija
         {
             InitializeComponent();
         }
-
+/*
         private void ResultSelected(object sender, SelectionChangedEventArgs e)
         {
             if (Rezultati.SelectedItem != null)
@@ -23,6 +23,6 @@ namespace Aplikacija
                 ResultClicked(this, rezultat);
             }
         }
-
+        */
     }
 }

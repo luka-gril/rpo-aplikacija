@@ -13,7 +13,10 @@ namespace Aplikacija {
 
         public ObservableCollection<Uporabnik> mUporabniki = new ObservableCollection<Uporabnik>();
         public ObservableCollection<Igra> mIgre = new ObservableCollection<Igra>();
-        private Igra mIzbranaIgra = null;      
+        private Igra mIzbranaIgra = null;
+        ObservableCollection<string> rezultati = new ObservableCollection<string>();
+
+        public UserControlRezultati ucr = new UserControlRezultati();
 
         public MainWindow() {
             InitializeComponent();
@@ -22,6 +25,9 @@ namespace Aplikacija {
             DeserializirajUporabnike();
             SeznamIger.Igre.ItemsSource = mIgre;
             SeznamUporabnikov.Uporabniki.ItemsSource = mUporabniki;
+
+            ucr = SeznamRezultatov;
+            
         }
 
         // SERIALIZACIJA IN DESERALIZACIJA METODE
@@ -115,6 +121,23 @@ namespace Aplikacija {
                 ZagonIgre.Background = Brushes.LightGray;
             }
 
+            string filePath = mIzbranaIgra.mPotDoIgre;
+           // int index = filePath.LastIndexOf("\\");
+          //  Console.WriteLine(index);
+           // filePath = filePath.Substring(0, index);
+            filePath += "\\Results.txt";
+            Console.WriteLine(filePath);
+
+            
+
+            var lines = File.ReadAllLines(filePath);
+            foreach (var line in lines)
+            {
+                rezultati.Add(line);
+            }
+
+            SeznamRezultatov.Rezultati.ItemsSource = rezultati;
+            
 
             /*
              * V tej metodi vzames podatke iz spremenljivke mIzbranaIgra in jih vstavis v vmesnik (ime, gumb za zagon,...)
@@ -129,12 +152,7 @@ namespace Aplikacija {
              */
         }
 
-        private void RezultatIzbran(object sender, Rezultat rezultat){
-            Console.WriteLine(rezultat.mPodatki);
-            /*
-            * Po želji lahko tu še kaj implementiramo, kakšen izpis al pa kaj  
-            */
-        }
+
 
         private void OdpriDodajanjeIgre(object sender, RoutedEventArgs e) // Odpre okno za dodajanje igre
         {

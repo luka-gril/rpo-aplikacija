@@ -20,7 +20,8 @@
                      Height="32" Background="Transparent" BorderBrush="{x:Null}" Margin="-1,0,0,0" Padding="2,0,0,0" />
         </DockPanel>
 
-        <ListView Grid.Row="1" Name="Rezultati" Background="#FF76746F" SelectionChanged="ResultSelected">
+        <ListView Grid.Row="1" Name="Rezultati" Background="#FF76746F"  ItemsSource="{Binding}">
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
